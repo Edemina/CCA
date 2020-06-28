@@ -9,14 +9,15 @@
     "addCounterBtn": "ADD COUNTER"
   },
   "counter": {
-    "counterName": "",
-    "lowerLimitField": "",
-    "upperLimitField": "",
-    "countValue": "",
-    "deleteBtn": "",
-    "resetBtn": "",
-    "editNameField": "",
-    "editNameFieldLabel": ""
+    "counterName": "1. Default Counter",
+    "lowerLimitFieldBtn": "CHANGE STEP OPTIONS?",
+    "upperLimitFieldBtn": "CHANGE STEP OPTIONS?",
+    "countValue": "0",
+    "blackButtons": "['-1','-2','-3','1','2','3']",
+    "deleteBtn": "DELETE",
+    "resetBtn": "RESET",
+    "editNameField": "Default Counter",
+    "editNameFieldLabel": "Edit Counter Title:"
   }
 
 }
