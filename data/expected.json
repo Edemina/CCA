@@ -11,13 +11,23 @@
   "counter": {
     "counterName": "1. Default Counter",
     "lowerLimitFieldBtn": "CHANGE STEP OPTIONS?",
+    "lowerLimitField": "1",
     "upperLimitFieldBtn": "CHANGE STEP OPTIONS?",
+    "upperLimitField": "3",
     "countValue": "0",
-    "blackButtons": "['-1','-2','-3','1','2','3']",
+    "blackBtn": ["-1","-2","-3","1","2","3"],
     "deleteBtn": "DELETE",
     "resetBtn": "RESET",
     "editNameField": "Default Counter",
-    "editNameFieldLabel": "Edit Counter Title:"
+    "editNameFieldLabel": "Edit Counter Title:",
+    "defaultNumberBlackBtn": 6
+  },
+  "defaultCounterFunctionality": {
+    "countValue": "0",
+    "countValueTC040": "-1",
+    "countValueTC041": "2",
+    "inputMin": "1",
+    "inputMax": "9"
   }
 
 }

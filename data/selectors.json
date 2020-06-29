@@ -11,13 +11,16 @@
   "counter": {
     "counterName": "h3",
     "lowerLimitFieldBtn": "[name='negative']",
+    "lowerLimitField": "[name='lower']",
     "upperLimitFieldBtn": "[name='positive']",
+    "upperLimitField": "[name='upper']",
     "countValue": ".badge",
-    "blackButtons": ".btn-black",
+    "blackBtn": ".btn-black",
     "deleteBtn": ".delete",
     "resetBtn": ".reset",
     "editNameField": "[name='edit']",
-    "editNameFieldLabel": "label"
+    "editNameFieldLabel": "label",
+    "error": ".alert"
   }
 
 }

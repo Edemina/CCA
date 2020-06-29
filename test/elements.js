@@ -116,27 +116,92 @@ describe('Complex Counter App', function () {
         })
 
         it('TC-020, TC-021 Default Sub and Add Buttons', function () {
-           // const actual = $$(selectorsCnt.blackButtons).map(el => el.isDisplayed());
-            const actual = $$(selectorsCnt.blackButtons); 
-            expect(actual).toBeDisplayed();
+            const actual = $$(selectorsCnt.blackBtn).filter(el => el.isDisplayed()).length;
+            const expected = expectedCnt.defaultNumberBlackBtn;
+            expect(actual).toEqual(expected);
         })
 
-        // it('TC-021 Default Add Buttons', function () {
-        //     const actual = $$(selectorsCnt.addButtons);
-        //     expect(actual).toBeDisplayed();
-        //     expect(length).toEqual(3);
-        // })
-        //
+        it('TC-022 Delete button', function () {
+            const actual = $(selectorsCnt.deleteBtn).isDisplayed();
+            expect(actual).toEqual(true);
+        })
+
+        it('TC-023 Reset button', function () {
+            const actual = $(selectorsCnt.resetBtn).isDisplayed();
+            expect(actual).toEqual(true);
+        })
+
+        it('TC-024 Edit Name Field', function () {
+            const actual = $(selectorsCnt.editNameField).isDisplayed();
+            expect(actual).toEqual(true);
+        })
+
+        it('TC-025 Label for Edit Name Field', function () {
+            const actual = $(selectorsCnt.editNameFieldLabel).isDisplayed();
+            expect(actual).toEqual(true);
+        })
+
+        it('TC-026 LLF input', function () {
+            $(selectorsCnt.lowerLimitFieldBtn).click();
+            const actual = $(selectorsCnt.lowerLimitField).isDisplayed();
+            expect(actual).toEqual(true);
+        })
+
+        it('TC-027 ULF input', function () {
+            $(selectorsCnt.upperLimitFieldBtn).click();
+            const actual = $(selectorsCnt.upperLimitField).isDisplayed();
+            expect(actual).toEqual(true);
+        })
+    });
+
+    describe('Default counter elements values', function () {
+        it('TC-028 Counter Name = 1. Default Counter', function () {
+            const actual = $(selectorsCnt.counterName)[1].getText();
+            expect(actual).toEqual(expectedCnt.counterName);
+        });
+
+        it('TC-029 Count Value = 0', function () {
+            const actual = $(selectorsCnt.countValue).getText();
+            expect(actual).toEqual(expectedCnt.countValue);
+        })
+
+        it('TC-030 LLF = CHANGE STEP OPTIONS?', function () {
+            const actual = $(selectorsCnt.lowerLimitFieldBtn).getText();
+            expect(actual).toEqual(expectedCnt.lowerLimitFieldBtn);
+        })
+
+        it('TC-032 ULF = CHANGE STEP OPTIONS?', function () {
+            const actual = $(selectorsCnt.upperLimitFieldBtn).getText();
+            expect(actual).toEqual(true);
+        })
+
+        it('TC-031, TC-033 Default Sub Buttons = -1, -2, -3', function () {
+            const actual = $$(selectorsCnt.blackBtn).map(el => el.getText());
+            const expected = expectedCnt.blackButtons;
+            expect(actual).toEqual(expected);
+        })
+
         // it('TC-022 Delete button', function () {
-        //     const actual = $(selectorsCnt.upperLimitFieldBtn).isDisplayed();
+        //     const actual = $(selectorsCnt.deleteBtn).isDisplayed();
         //     expect(actual).toEqual(true);
         // })
         //
         // it('TC-023 Reset button', function () {
-        //     const actual = $(selectorsCnt.upperLimitFieldBtn).isDisplayed();
+        //     const actual = $(selectorsCnt.resetBtn).isDisplayed();
+        //     expect(actual).toEqual(true);
+        // })
+        //
+        // it('TC-024 Edit Name Field', function () {
+        //     const actual = $(selectorsCnt.editNameField).isDisplayed();
+        //     expect(actual).toEqual(true);
+        // })
+        //
+        // it('TC-025 Label for Edit Name Field', function () {
+        //     const actual = $(selectorsCnt.editNameFieldLabel).isDisplayed();
         //     expect(actual).toEqual(true);
         // })
 
 
     });
+
 });
