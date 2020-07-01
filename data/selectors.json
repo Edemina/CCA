@@ -10,16 +10,16 @@
   },
   "counter": {
     "counterName": "h3",
-    "lowerLimitFieldBtn": "[name='negative']",
-    "lowerLimitField": "[name='lower']",
-    "upperLimitFieldBtn": "[name='positive']",
-    "upperLimitField": "[name='upper']",
+    "lowerLimitField": "[name='negative']",
+    "lowerInputField": "[name='lower']",
+    "upperLimitField": "[name='positive']",
+    "upperInputField": "[name='upper']",
     "countValue": ".badge",
-    "blackBtn": ".btn-black",
     "deleteBtn": ".delete",
     "resetBtn": ".reset",
     "editNameField": "[name='edit']",
     "editNameFieldLabel": "label",
+    "blackBtn": ".btn-black",
     "error": ".alert"
   }
 

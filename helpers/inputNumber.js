@@ -1,22 +1,22 @@
-//const selectorsGen = require('../data/selectors.json').general;
+//const selectorGen = require('../data/selectors.json').general;
 //const expectedGen = require('../data/expected.json').general;
-const selectorsCnt = require('../data/selectors.json').counter;
+const selectorCnt = require('../data/selectors.json').counter;
 //const expectedCnt = require('../data/expected.json').counter;
 
 
      function inputNumber(str, value){
         if(str ==="left"){
-            if($(selectorsCnt.lowerLimitFieldBtn).isDisplayed()){
-                $(selectorsCnt.lowerLimitFieldBtn).click();
+            if($(selectorCnt.lowerLimitField).isDisplayed()){
+                $(selectorCnt.lowerLimitField).click();
             }
-            $(selectorsCnt.lowerLimitField).click();
+            $(selectorCnt.lowerInputField).click();
             browser.keys('Backspace');
             browser.keys(value);
         } else {
-            if($(selectorsCnt.upperLimitFieldBtn).isDisplayed()){
-                $(selectorsCnt.upperLimitFieldBtn).click();
+            if($(selectorCnt.upperLimitField).isDisplayed()){
+                $(selectorCnt.upperLimitField).click();
             }
-            $(selectorsCnt.upperLimitField).click();
+            $(selectorCnt.upperInputField).click();
             browser.keys('Backspace');
             browser.keys(value);
         }

@@ -10,17 +10,18 @@
   },
   "counter": {
     "counterName": "1. Default Counter",
-    "lowerLimitFieldBtn": "CHANGE STEP OPTIONS?",
-    "lowerLimitField": "1",
-    "upperLimitFieldBtn": "CHANGE STEP OPTIONS?",
-    "upperLimitField": "3",
+    "lowerLimitField": "CHANGE STEP OPTIONS?",
+    "lowerInputField": "1",
+    "upperLimitField": "CHANGE STEP OPTIONS?",
+    "upperInputField": "3",
     "countValue": "0",
-    "blackBtn": ["-1","-2","-3","1","2","3"],
     "deleteBtn": "DELETE",
     "resetBtn": "RESET",
     "editNameField": "Default Counter",
     "editNameFieldLabel": "Edit Counter Title:",
-    "defaultNumberBlackBtn": 6
+    "defaultNumberBlackBtn": 6,
+    "blackBtn": ["-1", "-2", "-3", "1", "2", "3"],
+    "errorZero": "ERROR: Counter name should be longer than 6 characters"
   },
   "defaultCounterFunctionality": {
     "countValue": "0",
@@ -29,6 +30,4 @@
     "inputMin": "1",
     "inputMax": "9"
   }
-
 }
-
