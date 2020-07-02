@@ -2,6 +2,7 @@ const selectorGen = require('../data/selectors.json').general;
 const expectedGen = require('../data/expected.json').general;
 const selectorCnt = require('../data/selectors.json').counter;
 const expectedCnt = require('../data/expected.json').counter;
+const expectedGF = require('../data/expected.json').generalFunctionality;
 
 beforeEach(() => {
     browser.url('')
@@ -245,16 +246,16 @@ beforeEach(() => {
 //     });
 // });
 
-// describe('Elena Demina - Initial layout: Add counter module', function () {
-//     it('TC-33 should verify that ADD COUNTER button is present', function () {
-//         const actual = $(selectorGen.addCounterBtn).isDisplayed();
-//         expect(actual).toEqual(true);
-//     });
-//     it('TC-34 should verify that ADD COUNTER button has text "ADD COUNTER"', function () {
-//         const actual = $(selectorGen.addCounterBtn).getText();
-//         expect(actual).toEqual(expectedGen.addCounterBtn);
-//     });
-// });
+describe('Elena Demina - Initial layout: Add counter module', function () {
+    it('TC-33 should verify that ADD COUNTER button is present', function () {
+        const actual = $(selectorGen.addCounterBtn).isDisplayed();
+        expect(actual).toEqual(true);
+    });
+    it('TC-34 should verify that ADD COUNTER button has text "ADD COUNTER"', function () {
+        const actual = $(selectorGen.addCounterBtn).getText();
+        expect(actual).toEqual(expectedGen.addCounterBtn);
+    });
+});
 
 // describe('Elena Seregina - Test Complex Counter', () => {
 //     it('should have the right title', () => {
@@ -424,41 +425,26 @@ beforeEach(() => {
 
 describe('Elena Demina - Test: Error message in Add counter: Add Name Field', function () {
     it('TC-69 should verify that an error message will appear if Add Name Field is invalid.', function () {
-        //enter invalid name in to the Add Name Field
-        // $(selectorGen.addNameField).click();
-        // browser.keys('Backspace');
-
-        $(selectorGen.addNameField).setValue("a");
-        //verify error message appears
-        browser.pause(2000)
+        $(selectorGen.addNameField).setValue(expectedGF.addNameFieldLetter);
         const result = $(selectorCnt.error).isExisting();
         expect(result).toEqual(true);
     });
     it('TC-70 should verify the text of error message for the invalid Add Name Field', function () {
-        //enter invalid name in to the Add Name Field
-        $(selectorGen.addNameField).setValue("a");
+        $(selectorGen.addNameField).setValue(expectedGF.addNameFieldLetter);
         const result = $(selectorCnt.error).getText();
         expect(result).toEqual(expectedCnt.errorZero);
     });
-    //
-    // it('TC-72 should verify that an error message will appear if Add Name Field has 5 characters (ABCde)', function () {
-    //     browser.url('https://likejean.github.io/homework-5/');
-    //     //clear the Add Name Field
-    //     const addNameField = $("//input[@name='name']");
-    //     addNameField.setValue('ABCde');
-    //     //verify error message appears
-    //     const error = $("//div[@class='alert alert-danger row align-items-center justify-content-center']");
-    //     expect(error.isExisting()).toEqual(true);
-    // });
-    // it('TC-75 should verify that an error message will appear if Add Name Field has 6 characters (ABCdef)', function () {
-    //     browser.url('https://likejean.github.io/homework-5/');
-    //     //clear the Add Name Field
-    //     const addNameField = $("//input[@name='name']");
-    //     addNameField.setValue('ABCdef');
-    //     //verify error message appears
-    //     const error = $("//div[@class='alert alert-danger row align-items-center justify-content-center']");
-    //     expect(error.isExisting()).toEqual(true);
-    // });
+
+    it('TC-72 should verify that an error message will appear if Add Name Field has 5 characters (ABCde)', function () {
+        $(selectorGen.addNameField).setValue(expectedGF.addNameField5Char);
+        const result = $(selectorCnt.error).isExisting();
+        expect(result).toEqual(true);
+    });
+    it('TC-75 should verify that an error message will appear if Add Name Field has 6 characters (ABCdef)', function () {
+        $(selectorGen.addNameField).setValue(expectedGF.addNameField6Char);
+        const result = $(selectorCnt.error).isExisting();
+        expect(result).toEqual(true);
+    });
 });
 
 // describe('Alina Marukhnenko', function () {
