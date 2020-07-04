@@ -3,9 +3,9 @@ exports.config = {
     runner: 'local',
 
     specs: [
-        //'./test/elements.js',
+        './test/elements.js',
         //'./test/defaultFunctionality.js',
-        './test/group20605.js',
+        //'./test/group20605.js',
     ],
 
     exclude: [
@@ -15,10 +15,7 @@ exports.config = {
     maxInstances: 1,
 
     capabilities: [{
-    
-
         maxInstances: 5,
-        //
         browserName: 'chrome',
 
     }],
@@ -37,13 +34,10 @@ exports.config = {
     connectionRetryCount: 3,
 
     services: ['selenium-standalone'],
-    
 
     framework: 'mocha',
 
     reporters: ['spec','dot',['allure', {outputDir: 'allure-results'}]],
-
-
 
     mochaOpts: {
         ui: 'bdd',

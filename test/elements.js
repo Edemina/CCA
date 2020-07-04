@@ -183,8 +183,37 @@ describe('Complex Counter App', function () {
             expect(actual).toEqual(expected);
         })
 
+        it('TC-034 Delete button = Delete', function () {
+            const actual = $(selectorCnt.deleteBtn).getText();
+            expect(actual).toEqual(expectedCnt.deleteBtn);
+        })
 
+        it('TC-035 Reset button = Reset', function () {
+            const actual = $(selectorCnt.resetBtn).getText();
+            expect(actual).toEqual(expectedCnt.resetBtn);
+        })
 
+        it('TC-036 Label = Edit Counter Title', function () {
+            const actual = $(selectorCnt.editNameFieldLabel).getText();
+            expect(actual).toEqual(expectedCnt.editNameFieldLabel);
+        })
+
+        it('TC-037 Placeholder for Edit Name Field = Default Counter', function () {
+            const actual = $(selectorCnt.editNameField).getValue();
+            expect(actual).toEqual(expectedCnt.editNameField);
+        })
+
+        it('TC-038 Input for LLF = 1', function () {
+            $(selectorCnt.lowerLimitField).click();
+            const actual = $(selectorCnt.lowerInputField).getValue();
+            expect(actual).toEqual(expectedCnt.lowerInputField);
+        })
+
+        it('TC-039 Input for ULF = 3', function () {
+            $(selectorCnt.upperLimitField).click();
+            const actual = $(selectorCnt.upperInputField).getValue();
+            expect(actual).toEqual(expectedCnt.upperInputField);
+        })
     });
 
 });

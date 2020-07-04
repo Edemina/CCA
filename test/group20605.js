@@ -426,23 +426,23 @@ describe('Elena Demina - Initial layout: Add counter module', function () {
 describe('Elena Demina - Test: Error message in Add counter: Add Name Field', function () {
     it('TC-69 should verify that an error message will appear if Add Name Field is invalid.', function () {
         $(selectorGen.addNameField).setValue(expectedGF.addNameFieldLetter);
-        const result = $(selectorCnt.error).isExisting();
+        const result = $(selectorCnt.errorMsg).isExisting();
         expect(result).toEqual(true);
     });
     it('TC-70 should verify the text of error message for the invalid Add Name Field', function () {
         $(selectorGen.addNameField).setValue(expectedGF.addNameFieldLetter);
-        const result = $(selectorCnt.error).getText();
+        const result = $(selectorCnt.errorMsg).getText();
         expect(result).toEqual(expectedCnt.errorZero);
     });
 
     it('TC-72 should verify that an error message will appear if Add Name Field has 5 characters (ABCde)', function () {
         $(selectorGen.addNameField).setValue(expectedGF.addNameField5Char);
-        const result = $(selectorCnt.error).isExisting();
+        const result = $(selectorCnt.errorMsg).isExisting();
         expect(result).toEqual(true);
     });
     it('TC-75 should verify that an error message will appear if Add Name Field has 6 characters (ABCdef)', function () {
         $(selectorGen.addNameField).setValue(expectedGF.addNameField6Char);
-        const result = $(selectorCnt.error).isExisting();
+        const result = $(selectorCnt.errorMsg).isExisting();
         expect(result).toEqual(true);
     });
 });
