@@ -3,9 +3,9 @@ exports.config = {
     runner: 'local',
 
     specs: [
-        './test/elements.js',
+        //'./test/elements.js',
         //'./test/defaultFunctionality.js',
-        //'./test/group20605.js',
+        './test/group20605.js',
     ],
 
     exclude: [

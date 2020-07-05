@@ -31,7 +31,8 @@
     "countValueTC041": "2",
     "inputMin": "1",
     "inputMax": "9",
-    "newName": "1. New name"
+    "newName": "1. New name",
+    "valueTC044": 2
 
   },
 
@@ -39,5 +40,10 @@
     "addNameFieldLetter": "a",
     "addNameField5Char": "ABCde",
     "addNameField6Char": "ABCdef"
+  },
+
+  "newCounter": {
+    "secondCounterNameTC112": "1. Second Counter",
+    "totalResultTC115": "Total: 50"
   }
 }

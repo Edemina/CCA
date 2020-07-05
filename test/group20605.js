@@ -3,6 +3,8 @@ const expectedGen = require('../data/expected.json').general;
 const selectorCnt = require('../data/selectors.json').counter;
 const expectedCnt = require('../data/expected.json').counter;
 const expectedGF = require('../data/expected.json').generalFunctionality;
+const expectedNewCntr = require('../data/expected.json').newCounter;
+const addNewCounter = require('../helpers/addNewCounter');
 
 beforeEach(() => {
     browser.url('')
@@ -426,23 +428,23 @@ describe('Elena Demina - Initial layout: Add counter module', function () {
 describe('Elena Demina - Test: Error message in Add counter: Add Name Field', function () {
     it('TC-69 should verify that an error message will appear if Add Name Field is invalid.', function () {
         $(selectorGen.addNameField).setValue(expectedGF.addNameFieldLetter);
-        const result = $(selectorCnt.errorMsg).isExisting();
+        const result = $(selectorCnt.error).isExisting();
         expect(result).toEqual(true);
     });
     it('TC-70 should verify the text of error message for the invalid Add Name Field', function () {
         $(selectorGen.addNameField).setValue(expectedGF.addNameFieldLetter);
-        const result = $(selectorCnt.errorMsg).getText();
+        const result = $(selectorCnt.error).getText();
         expect(result).toEqual(expectedCnt.errorZero);
     });
 
     it('TC-72 should verify that an error message will appear if Add Name Field has 5 characters (ABCde)', function () {
         $(selectorGen.addNameField).setValue(expectedGF.addNameField5Char);
-        const result = $(selectorCnt.errorMsg).isExisting();
+        const result = $(selectorCnt.error).isExisting();
         expect(result).toEqual(true);
     });
     it('TC-75 should verify that an error message will appear if Add Name Field has 6 characters (ABCdef)', function () {
         $(selectorGen.addNameField).setValue(expectedGF.addNameField6Char);
-        const result = $(selectorCnt.errorMsg).isExisting();
+        const result = $(selectorCnt.error).isExisting();
         expect(result).toEqual(true);
     });
 });
@@ -508,95 +510,47 @@ describe('Elena Demina - Test: Error message in Add counter: Add Name Field', fu
 // });
 
 describe('Elena Demina - Test: Delete & Reset: Delete button', function () {
-    // it('TC 111 - should verify that DELETE button will delete counter', function () {
-    //     browser.url('https://likejean.github.io/homework-5/');
-    //     //click delete
-    //     const deleteButton = $('//button[@id="1"]');
-    //     deleteButton.click();
-    //     //verify counter does not exist by counter name
-    //     const counterName = $('//div[@class="row align-items-center justify-content-center"]/h3');
-    //     const expected = counterName.isExisting()
-    //     expect(expected).toEqual(false);
-    // });
-    //
-    // it('TC 112 - should verify numbering after deleting', function () {
-    //     browser.url('https://likejean.github.io/homework-5/');
-    //     //set name and add second counter
-    //     const addNameField = $('//input[@name="name"]');
-    //     addNameField.setValue("Second Counter");
-    //     const addCounterButton = $('//button[@class="btn-success btn Ripple-parent add col-6"]');
-    //     addCounterButton.click();
-    //     //set name and add third counter
-    //     addNameField.setValue("Third Counter");
-    //     addCounterButton.click();
-    //     //delete second counter
-    //     const secondDeleteButton = $('//button[@id="2"]');
-    //     secondDeleteButton.click();
-    //     //verify first counter and second counter by name
-    //     const firstCounterName = $('//body//div[@id=\'root\']//div//div//div[1]//div[1]//h3[1]');
-    //     const actualFirstCounterName = firstCounterName.getText();
-    //     const expectFirstCounterName = "1. Default Counter"
-    //     const secondCounterName = $('//div[2]//div[1]//h3[1]');
-    //     const actualSecondCounterName = secondCounterName.getText();
-    //     const expectSecondCounterName = "2. Third Counter";
-    //     expect(actualFirstCounterName).toEqual(expectFirstCounterName);
-    //     expect(actualSecondCounterName).toEqual(expectSecondCounterName);
-    // });
-    //
-    // it('TC 115 - should verify Total Result after deleting', function () {
-    //     browser.url('https://likejean.github.io/homework-5/');
-    //     //set name and add second counter
-    //     const addNameField = $('//input[@name="name"]');
-    //     addNameField.setValue("Second Counter");
-    //     const addCounterButton = $('//button[@class="btn-success btn Ripple-parent add col-6"]');
-    //     addCounterButton.click();
-    //     //verify Total: 50
-    //     const totalResult = $('//h3[@class="total-count"]');
-    //     let actualTotalResultText = totalResult.getText();
-    //     let expectTotalResultText = "Total: 50";
-    //     expect(actualTotalResultText).toEqual(expectTotalResultText);
-    //     //delete second counter
-    //     const secondDeleteButton = $('//button[@id="2"]');
-    //     secondDeleteButton.click();
-    //     //verify Total: 0
-    //     actualTotalResultText = totalResult.getText();
-    //     expectTotalResultText = "Total: 0";
-    //     expect(actualTotalResultText).toEqual(expectTotalResultText);
-    // });
+    it('TC-111/TC-047 - should verify that DELETE button will delete counter', function () {
+        $(selectorCnt.deleteBtn).click();
+        const actual = $(selectorCnt.countValue).isExisting();
+        expect(actual).toEqual(false);
+    });
+
+    it('TC-112 - should verify numbering after deleting', function () {
+        //browser.url('');
+        addNewCounter.addSecondCounter();
+        $(selectorCnt.deleteBtn).click();
+        //verify first counter and second counter by name
+        const result = $$(selectorCnt.counterName)[1].getText();
+        expect(result).toEqual(expectedNewCntr.secondCounterNameTC112);
+    });
+
+    it('TC-115 - should verify Total Result after deleting', function () {
+        addNewCounter.addSecondCounter();
+        const totalResult1 = $(selectorGen.totalResult).getText();
+        expect(totalResult1).toEqual(expectedNewCntr.totalResultTC115);
+        $$(selectorCnt.deleteBtn)[1].click();
+        const totalResult2 = $(selectorGen.totalResult).getText();
+        expect(totalResult2).toEqual(expectedGen.totalResult);
+    });
 });
 
 describe('Elena Demina - Test: Delete & Reset: Reset button', function () {
-    // it('TC 116 - should verify that pressing "RESET" button will reset Count Value to 0', function () {
-    //     //add second counter with default value 50
-    //     const addCounterButton = $('//button[@class="btn-success btn Ripple-parent add col-6"]');
-    //     addCounterButton.click();
-    //     //delete first counter
-    //     const firstDeleteButton = $('//button[@id="1"]');
-    //     firstDeleteButton.click();
-    //     //reset
-    //     const resetButton = $("//button[@class='btn-primary btn Ripple-parent reset']");
-    //     resetButton.click();
-    //     //verify Count Value = 0
-    //     const countValue = $("//span[@class='badge primary badge-primary']");
-    //     const actualCountValueText = countValue.getText();
-    //     const expectCountValueText = "0";
-    //     expect(actualCountValueText).toEqual(expectCountValueText);
-    // });
-    //
-    // it('TC 117 - should verify that pressing "RESET" button will reset Total result to 0', function () {
-    //     //add second counter with default value 50
-    //     const addCounterButton = $('//button[@class="btn-success btn Ripple-parent add col-6"]');
-    //     addCounterButton.click();
-    //     //click reset on second counter
-    //     const secondResetButton = $("//div[2]//div[6]//button[2]");
-    //     secondResetButton.click();
-    //     //verify Total: 0
-    //     const totalResult = $('//h3[@class="total-count"]');
-    //     const actualTotalResultText = totalResult.getText();
-    //     const expectTotalResultText = "Total: 0";
-    //     browser.pause(3000)
-    //     expect(actualTotalResultText).toEqual(expectTotalResultText);
-    // });
+    it('TC 116/TC-046 - should verify that pressing "RESET" button will reset Count Value to 0', function () {
+        //browser.refresh();
+        $$(selectorCnt.blackBtn)[5].click();
+        $(selectorCnt.resetBtn).click();
+        const actual = $(selectorCnt.countValue).getText();
+        expect(actual).toEqual(expectedCnt.countValue);
+    });
+
+    it('TC 117 - should verify that pressing "RESET" button will reset Total result to 0', function () {
+        //browser.refresh();
+        $$(selectorCnt.blackBtn)[5].click();
+        $(selectorCnt.resetBtn).click();
+        const actual = $(selectorGen.totalResult).getText();
+        expect(actual).toEqual(expectedGen.totalResult);
+    });
 });
 
 // describe('Alina Archangelsky - TC 119 Verify that LLF accepts 1 if ULF has button "Change step options?"', function () {
